@@ -1,0 +1,19 @@
+
+<form>
+  <div class="form-group">
+    <label for="busquedaCliente">Buscar cliente: </label>
+    <input type="text" class="form-control" placeholder="Número de cliente" (keyup.enter)= "buscar(texto.value)" #texto/>
+    <button (click)="buscar(texto.value)" type="button" class="btn btn-primary">Buscar</button>
+  </div>
+</form>
+
+<div class="row" *ngIf="clientesArr.length ==0">
+  <div class="col-md-12">
+    <div class = "alert alert-info" role="alert">No existen clientes con id: {{ _texto }}</div>
+  </div>
+</div>
+
+
+<div class="list-group">
+  <a *ngFor="let cliente of clientesArr" [routerLink]="['/cliente', cliente.id]" class="list-group-item list-group-item-action">{{ cliente.nombre }}</a>
+</div>

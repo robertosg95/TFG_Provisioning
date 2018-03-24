@@ -1,0 +1,14 @@
+
+<form>
+  <div class="form-group">
+    <label for="busquedaCliente">Buscar cliente: </label>
+    <input type="text" class="form-control" placeholder="Número de cliente" (keyup.enter)= "buscar(texto.value)" #texto/>
+    <button (click)="buscar(texto.value)" type="button" class="btn btn-primary">Buscar</button>
+    
+  </div>
+</form>
+
+
+<div class="list-group">
+  <a *ngFor="let cliente of clientes; let i= index" [routerLink]="['/cliente', i]" class="list-group-item list-group-item-action">{{ cliente.nombre }}</a>
+</div>
