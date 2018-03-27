@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {ClientesService, Cliente} from '../../../../../../AngularProjects/tfg-v0.1/src/app/services/clientes.service';
+import { ActivatedRoute } from '@angular/router';
+import { ClientesService, Cliente } from '../../../../../../AngularProjects/tfg-v0.1/src/app/services/clientes.service';
+import { Instalaciones } from '../../interfaces/instalaciones.interface';
 
 @Component({
   selector: 'app-cliente',
@@ -9,14 +10,20 @@ import {ClientesService, Cliente} from '../../../../../../AngularProjects/tfg-v0
 })
 export class ClienteComponent implements OnInit {
 
-  cliente:any = {};
+  instalacion: any = {};
+
+  cliente: any = {};
+
+  id: string;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private clientesService: ClientesService) {
+    private clientesService: ClientesService) {
     this.activatedRoute.params.subscribe(params => {
-      this.cliente = this.clientesService.getCliente( params['id']);
+      this.id = params['id'];
+      this.clientesService.getInstalacion(this.id)
+        .subscribe(instalacion => this.instalacion = instalacion);
     })
-   }
+  }
 
   ngOnInit() {
   }

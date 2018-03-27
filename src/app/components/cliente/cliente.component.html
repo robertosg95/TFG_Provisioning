@@ -1,13 +1,158 @@
 <div class="container">
   <div class="row">
+    <h3>{{instalacion.ID_cliente}}</h3>
     <div class="col-md">
-      {{ cliente.nombre }}
+      <a class="btn success btn-block" [routerLink]="['/instalaciones']">Editar</a><br>
     </div>
-    <div class="col-md">
-      {{ cliente.direccion }}
-    </div>
-    <div class="col-md">
-      <a class="btn btn-outline-warning btn-block" [routerLink]="['/instalaciones']">Editar</a>
-    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="p-3 mb-2 bg-app text-white col">Cliente</div>
+</div>
+<hr>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">ID cliente:</label>
+  </div>
+  <div class="col-10">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.ID_cliente" name="ID_cliente" disabled>
+  </div>
+</div>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">Nombre: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.nombre" name="nombre" disabled/>
+  </div>
+  <div class="col">
+    <label class="col-2 col-form-label">Apellidos: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.apellidos" name="apellidos" disabled/>
+  </div>
+</div>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">Dirección:</label>
+  </div>
+  <div class="col-10">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.direccion" name="direccion" disabled>
+  </div>
+</div>
+<br>
+
+
+<div class="row">
+  <div class="p-3 mb-2 bg-app text-white col">Router</div>
+</div>
+<hr>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">Modelo: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" [(ngModel)]="instalacion.modelo_router" name="modelo_router" disabled>
+  </div>
+  <div class="col">
+    <label class="col-form-label">Número de serie: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.SN" name="SN" disabled/>
+  </div>
+</div>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">Usuario PPoE: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.usuario_ppoe" name="usuario_ppoe" disabled/>
+  </div>
+  <div class="col">
+    <label class="col-form-label">Contraseña PPoE: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.contrasena_ppoe" name="contraseña_ppoe" disabled/>
+  </div>
+</div>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">Perfil:</label>
+  </div>
+  <div class="col-10">
+    <input class="form-control" [(ngModel)]="instalacion.perfil_configuracion" name="perfil_configuracion" disabled>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="p-3 mb-2 bg-app text-white col">Wi-Fi</div>
+</div>
+
+<hr>
+<div class="form-group row">
+  <div class="input-group-text">
+    Habilitar &thinsp;
+    <input type="checkbox" aria-label="Checkbox for following text input" [(ngModel)]="instalacion.habilitar_wifi" name="habilitar_wifi" disabled>
+  </div>
+</div>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">SSID: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.SSID" name="SSID" disabled/>
+  </div>
+  <div class="col">
+    <label class="col-2 col-form-label">Contraseña: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.contrasena_wifi" name="contraseña_wifi" disabled />
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="p-3 mb-2 bg-app text-white col">VoIP</div>
+</div>
+
+<hr>
+<div class="form-group row">
+  <div class="input-group-text">
+    Habilitar &thinsp;
+    <input type="checkbox" aria-label="Checkbox for following text input" [(ngModel)]="instalacion.habilitar_voip" name="habilitar_voip" disabled>
+  </div>
+</div>
+<div class='form-group row'>
+  <div class="col">
+    <label class="col-form-label">Teléfono: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.telefono" name="telefono" disabled/>
+  </div>
+  <div class="col">
+    <label class="col-2 col-form-label">Contraseña VoIP: </label>
+  </div>
+  <div class="col-4">
+    <input class="form-control" type="text" [(ngModel)]="instalacion.contrasena_telefono" name="contraseña_telefono" disabled/>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="p-3 mb-2 bg-app text-white col">Web</div>
+</div>
+
+<hr>
+<div class='form-group row'>
+  <div class=" col ">
+    <label class="col-form-label ">Usuario: </label>
+  </div>
+  <div class="col-4 ">
+    <input class="form-control " type="text " [(ngModel)]="instalacion.usuario_web" name="usuario_web" disabled/>
+  </div>
+  <div class="col ">
+    <label class="col-2 col-form-label ">Contraseña: </label>
+  </div>
+  <div class="col-4 ">
+    <input class="form-control " type="text " [(ngModel)]="instalacion.contrasena_web" name="contraseña_web" disabled/>
   </div>
 </div>

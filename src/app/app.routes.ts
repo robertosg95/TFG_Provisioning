@@ -8,11 +8,11 @@ import {AuthGuardService} from './services/auth-guard.service';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'instalaciones', component: InstalacionesComponent },
-  { path: 'cliente/:id', component: ClienteComponent },
-  { path: 'instalaciones-buscador/:id', component: InstalacionesBuscadorComponent },
-  { path: 'crear', canActivate: [AuthGuardService], data: { roles: ['admin'] }, component: CrearInstalacionComponent },
+  { path: 'instalaciones', canActivate: [AuthGuardService], component: InstalacionesComponent },
+  { path: 'cliente/:id', canActivate: [AuthGuardService], component: ClienteComponent },
+  { path: 'instalaciones-buscador/:id', canActivate: [AuthGuardService], component: InstalacionesBuscadorComponent },
+  { path: 'crear', canActivate: [AuthGuardService], component: CrearInstalacionComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
-  
+
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

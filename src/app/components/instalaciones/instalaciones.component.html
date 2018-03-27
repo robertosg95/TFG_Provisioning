@@ -1,14 +1,13 @@
-
 <form>
-  <div class="form-group">
-    <label for="busquedaCliente">Buscar cliente: </label>
-    <input type="text" class="form-control" placeholder="Número de cliente" (keyup.enter)= "buscar(texto.value)" #texto/>
-    <button (click)="buscar(texto.value)" type="button" class="btn btn-primary">Buscar</button>
-    
+  <div class="form-group row">
+    <label for="busquedaCliente" class="col text-right">Buscar cliente: </label>
+    <input type="text" class="form-control col-6" placeholder="Número de cliente" (keyup.enter)="buscar(texto.value)" #texto/>&thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp;
+    <button (click)="buscar(texto.value)" type="button" class="btn success col">Buscar</button>
+
   </div>
 </form>
 
 
 <div class="list-group">
-  <a *ngFor="let cliente of clientes; let i= index" [routerLink]="['/cliente', i]" class="list-group-item list-group-item-action">{{ cliente.nombre }}</a>
+  <a *ngFor="let k of instalaciones | keys" [routerLink]="['/cliente', i]" class="list-group-item list-group-item-action">{{instalaciones[k].nombre}}</a>
 </div>

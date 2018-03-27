@@ -7,16 +7,20 @@ import * as auth0 from 'auth0-js';
 @Injectable()
 export class AuthService {
 
+  userProfile: any;
+
   auth0 = new auth0.WebAuth({
     clientID: 'MkrrTI7lwwClb6pWgeksqt1J4uFjmHlD',
     domain: 'roberto-tfg.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'https://roberto-tfg.eu.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/callback',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+
+  }
 
   public login(): void {
     this.auth0.authorize();
@@ -41,6 +45,7 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+
   }
 
   public logout(): void {
@@ -59,21 +64,20 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
-
-
-  public isAdmin() {
+  public getProfile(cb): void {
   const accessToken = localStorage.getItem('access_token');
-  console.log(this.auth0.client.userInfo.profile);
   if (!accessToken) {
     throw new Error('Access Token must exist to fetch profile');
   }
-  this.auth0.client.userInfo(accessToken, (err, profile) => {
-    if (roles) {
-      return true;
-    }
 
-    return false;
+  const self = this;
+  this.auth0.client.userInfo(accessToken, (err, profile) => {
+    if (profile) {
+      self.userProfile = profile;
+    }
+    cb(err, profile);
   });
-  }
+}
+
 
 }

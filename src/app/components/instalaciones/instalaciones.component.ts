@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientesService, Cliente} from '../../services/clientes.service';
-import {Router} from '@angular/router';
+import { ClientesService, Cliente } from '../../services/clientes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instalaciones',
@@ -9,19 +9,20 @@ import {Router} from '@angular/router';
 })
 export class InstalacionesComponent implements OnInit {
 
-  clientes:Cliente[] = [];
+  clientes: Cliente[] = [];
 
-  constructor( private _clientesService:ClientesService,
-               private router:Router) { }
+  instalaciones: any[] = [];
 
-  ngOnInit() {
-
-    this.clientes = this._clientesService.getClientes();
-
+  constructor(private _clientesService: ClientesService,
+    private router: Router) {
+    this._clientesService.getInstalaciones()
+      .subscribe(instalaciones => this.instalaciones = instalaciones);
   }
 
-  buscar( _texto:string ){
-    this.router.navigate(['/instalaciones-buscador', _texto])
+  ngOnInit() { }
+
+  buscar(_texto: string) {
+    console.log(this.instalaciones);
 
   }
 

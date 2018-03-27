@@ -1,3 +1,184 @@
-<p>
-  crear-instalacion works!
-</p>
+<div *ngIf="isAdmin(); else elseBlock">
+
+  <h3>Crear instalación</h3><br>
+  <form (ngSubmit)="guardar()" (#forma)="NgForm">
+
+
+    <div class="row">
+      <div class="p-3 mb-2 bg-app text-white col">Cliente</div>
+    </div>
+    <hr>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">ID cliente:</label>
+      </div>
+      <div class="col-10">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.ID_cliente" name="ID_cliente">
+      </div>
+    </div>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">Nombre: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.nombre" name="nombre" />
+      </div>
+      <div class="col">
+        <label class="col-2 col-form-label">Apellidos: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.apellidos" name="apellidos" />
+      </div>
+    </div>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">Dirección:</label>
+      </div>
+      <div class="col-10">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.direccion" name="direccion">
+      </div>
+    </div>
+    <br>
+
+
+    <div class="row">
+      <div class="p-3 mb-2 bg-app text-white col">Router</div>
+    </div>
+    <hr>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">Modelo: </label>
+      </div>
+      <div class="col-4">
+        <select class="form-control" [(ngModel)]="instalacion.modelo_router" name="modelo_router">
+          <option disabled selected value> Seleccione un modelo </option>
+          <option value="modelo 1">Modelo 1</option>
+          <option value="modelo 2">Modelo 2</option>
+          <option value="modelo 3">Modelo 3</option>
+        </select>
+      </div>
+      <div class="col">
+        <label class="col-form-label">Número de serie: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.SN" name="SN" />
+      </div>
+    </div>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">Usuario PPoE: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.usuario_ppoe" name="usuario_ppoe" />
+      </div>
+      <div class="col">
+        <label class="col-form-label">Contraseña PPoE: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.contrasena_ppoe" name="contraseña_ppoe" />
+      </div>
+    </div>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">Perfil:</label>
+      </div>
+      <div class="col-10">
+        <select class="form-control" [(ngModel)]="instalacion.perfil_configuracion" name="perfil_configuracion">
+          <option value="por defecto">Por defecto</option>
+          <option value="configurar wifi">Configurar Wi-Fi</option>
+          <option value="configurar voip">Configurar VoIP</option>
+          <option value="configurar wifi+voip">Configurar Wi-Fi + VoIP</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="p-3 mb-2 bg-app text-white col">Wi-Fi</div>
+    </div>
+
+    <hr>
+    <div class="form-group row">
+      <div class="input-group-text">
+        Habilitar &thinsp;
+        <input type="checkbox" aria-label="Checkbox for following text input" [(ngModel)]="instalacion.habilitar_wifi" name="habilitar_wifi">
+      </div>
+    </div>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">SSID: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.SSID" name="SSID" />
+      </div>
+      <div class="col">
+        <label class="col-2 col-form-label">Contraseña: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.contrasena_wifi" name="contraseña_wifi" />
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="p-3 mb-2 bg-app text-white col">VoIP</div>
+    </div>
+
+    <hr>
+    <div class="form-group row">
+      <div class="input-group-text">
+        Habilitar &thinsp;
+        <input type="checkbox" aria-label="Checkbox for following text input" [(ngModel)]="instalacion.habilitar_voip" name="habilitar_voip">
+      </div>
+    </div>
+    <div class='form-group row'>
+      <div class="col">
+        <label class="col-form-label">Teléfono: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.telefono" name="telefono" />
+      </div>
+      <div class="col">
+        <label class="col-2 col-form-label">Contraseña VoIP: </label>
+      </div>
+      <div class="col-4">
+        <input class="form-control" type="text" [(ngModel)]="instalacion.contrasena_telefono" name="contraseña_telefono" />
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="p-3 mb-2 bg-app text-white col">Web</div>
+    </div>
+
+    <hr>
+    <div class='form-group row'>
+      <div class=" col ">
+        <label class="col-form-label ">Usuario: </label>
+      </div>
+      <div class="col-4 ">
+        <input class="form-control " type="text " [(ngModel)]="instalacion.usuario_web" name="usuario_web" />
+      </div>
+      <div class="col ">
+        <label class="col-2 col-form-label ">Contraseña: </label>
+      </div>
+      <div class="col-4 ">
+        <input class="form-control " type="text " [(ngModel)]="instalacion.contrasena_web" name="contraseña_web" />
+      </div>
+    </div>
+    <br>
+    <div class='form-group row'>
+      <div class=" col-2 ">
+        <button type="submit" class="btn success">
+          Guardar
+        </button>
+      </div>
+      <div class="col-2 ">
+        <button type="button" class="btn success">
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
+<ng-template #elseBlock>No tiene permisos, póngase en contacto con el administrador</ng-template>

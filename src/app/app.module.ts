@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 //Routes
-import {APP_ROUTING} from './app.routes';
+import { APP_ROUTING } from './app.routes';
 
 
 //components
@@ -17,9 +19,10 @@ import { InstalacionesBuscadorComponent } from './components/instalaciones-busca
 import { CrearInstalacionComponent } from './components/crear-instalacion/crear-instalacion.component';
 
 //services
-import {ClientesService} from './services/clientes.service';
-import {AuthService} from './services/auth.service';
-import {AuthGuardService} from './services/auth-guard.service';
+import { ClientesService } from './services/clientes.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { KeysPipe } from './pipes/keys.pipe';
 
 
 
@@ -32,11 +35,15 @@ import {AuthGuardService} from './services/auth-guard.service';
     FooterComponent,
     ClienteComponent,
     InstalacionesBuscadorComponent,
-    CrearInstalacionComponent
+    CrearInstalacionComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
-    APP_ROUTING
+    APP_ROUTING,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
     ClientesService,

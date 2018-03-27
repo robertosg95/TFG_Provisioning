@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+.main-container{
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.bg-app{
+  background-color: #003399;
+}
+
+.btn {
+  border: 2px solid #003399;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Green */
+.success {
+  border-color: #003399;
+  color: #003399;
+}
+
+.success:hover {
+  background-color: #003399;
+  color: white;
+}

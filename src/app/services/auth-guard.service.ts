@@ -6,13 +6,10 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService) {  }
 
   canActivate(route:ActivatedRouteSnapshot, state:RouterStateSnapshot){
-
-    // on the data property
-    const token = localStorage.getItem('token');
-    if (this.authService.isAuthenticated() && this.authService.isAdmin()){
+    if (this.authService.isAuthenticated()){
       console.log("Pasó el guard ");
       return true;
     }else{
