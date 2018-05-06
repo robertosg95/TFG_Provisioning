@@ -30,7 +30,8 @@ export class CrearInstalacionComponent implements OnInit {
     telefono: "",
     contrasena_telefono: "",
     usuario_web: "",
-    contrasena_web: ""
+    contrasena_web: "",
+    key$: ""
 
   }
 
@@ -49,7 +50,8 @@ export class CrearInstalacionComponent implements OnInit {
   }
 
   public isAdmin() {
-    if (this.profile.sub == "auth0|5ab0d7c371b5ad0e62997fae") {
+
+    if (this.profile.sub == "auth0|5ab0d7fc4c56d3111662f596") {
       return true;
     } else {
       return false;

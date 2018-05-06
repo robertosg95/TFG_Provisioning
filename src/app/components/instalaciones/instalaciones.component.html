@@ -1,13 +1,13 @@
 <form>
   <div class="form-group row">
     <label for="busquedaCliente" class="col text-right">Buscar cliente: </label>
-    <input type="text" class="form-control col-6" placeholder="Número de cliente" (keyup.enter)="buscar(texto.value)" #texto/>&thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp;
-    <button (click)="buscar(texto.value)" type="button" class="btn success col">Buscar</button>
+    <input type="text" class="form-control col-6" placeholder="Número de cliente" (keydown)="search($event)" #texto/>&thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp;
+    <button (click)="buscar(texto.value) " type="button " class="btn success col ">Buscar</button>
 
   </div>
 </form>
 
 
-<div class="list-group">
-  <a *ngFor="let k of instalaciones | keys" [routerLink]="['/cliente', i]" class="list-group-item list-group-item-action">{{instalaciones[k].nombre}}</a>
+<div class="list-group ">
+  <a *ngFor="let k of instalaciones | keys " [routerLink]="[ '/cliente', k] " class="list-group-item list-group-item-action ">{{instalaciones[k].ID_cliente}}</a>
 </div>

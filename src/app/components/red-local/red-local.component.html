@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="p-3 mb-2 bg-app text-white col">Configurar red local</div>
+</div>
+<hr>
+<form (ngSubmit)="guardar()" #forma="ngForm">
+  <div class='form-group row'>
+    <div class="col">
+      <label class="col-form-label">Dirección IP del router:</label>
+    </div>
+    <div class="col">
+      <input class="form-control" type="text" [(ngModel)]="red_local.ip_router" name="ip_router">
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class="col">
+      <label class="col-form-label">Máscara de red: </label>
+    </div>
+    <div class="col">
+      <input class="form-control" type="text" [(ngModel)]="red_local.mascara_red" name="direccion_ip" />
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="p-3 mb-2 bg-app text-white col">DHCP</div>
+  </div>
+  <br>
+  <div class='form-group row'>
+    <div class="col">
+      <label class="col-form-label">IP de inicio del rango:</label>
+    </div>
+    <div class="col">
+      <input class="form-control" type="text" [(ngModel)]="red_local.inicio_dhcp" name="inicio_dhcp">
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class="col">
+      <label class="col-form-label">IP de fin del rango: </label>
+    </div>
+    <div class="col">
+      <input class="form-control" type="text" [(ngModel)]="red_local.fin_dhcp" name="fin_dhcp" />
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="p-3 mb-2 bg-app text-white col">Servidores DNS</div>
+  </div>
+  <br>
+  <div class='form-group row'>
+    <div class="col">
+      <label class="col-form-label">Servidor DNS primario:</label>
+    </div>
+    <div class="col">
+      <input class="form-control" type="text" [(ngModel)]="red_local.dns_primario" name="dns_primario">
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class="col">
+      <label class="col-form-label">Servidor DNS secundario: </label>
+    </div>
+    <div class="col">
+      <input class="form-control" type="text" [(ngModel)]="red_local.dns_secundario" name="dns_secundario" />
+    </div>
+  </div>
+
+  <br>
+  <div class='form-group row'>
+    <div class=" col-2 ">
+      <button type="submit" class="btn success">
+          Guardar
+        </button>
+    </div>
+    <div class="col-2 " routerLinkActive="active">
+      <button type="button" class="btn success" [routerLink]="['/home-clientes']">
+          Cancelar
+        </button>
+    </div>
+  </div>
+
+</form>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Instalaciones } from '../interfaces/instalaciones.interface';
 import 'rxjs/Rx';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class ClientesService {
@@ -36,7 +37,7 @@ export class ClientesService {
       }
     ];
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private db: AngularFireDatabase) {
     console.log("Servicio listo");
   }
 
@@ -46,6 +47,19 @@ export class ClientesService {
       'Content-type': 'application/json'
     });
     return this.http.post(this.firebaseURL, body, { headers })
+      .map(res => {
+        console.log(res.json());
+        return res.json();
+      })
+  }
+
+  actualizarInstalacion(instalacion: Instalaciones, key$: string) {
+    let body = JSON.stringify(instalacion);
+    let headers = new Headers({
+      'Content-type': 'application/json'
+    });
+    let url = `${this.instalacionesURL}/${key$}.json`
+    return this.http.put(url, body, { headers })
       .map(res => {
         console.log(res.json());
         return res.json();
@@ -69,6 +83,8 @@ export class ClientesService {
       })
   }
 
+
+
   getClientes() {
     return this.clientes;
   }
@@ -91,6 +107,18 @@ export class ClientesService {
 
   getClienteBuscador() {
     return this.clientesArr;
+  }
+
+  public getMetadata() {
+    let url = "https://roberto-tfg.eu.auth0.com/api/v2/users/user_id?fields=user_metadata&include_fields=true";
+    let headers = new Headers({
+      'Content-type': 'application/json'
+    });
+    return this.http.get(url)
+      .map(res => {
+        console.log(res.json());
+        return res.json();
+      })
   }
 }
 

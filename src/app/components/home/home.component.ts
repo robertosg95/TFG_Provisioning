@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from 'C:/AngularProjects/tfg-v0.1/src/app/services/auth.service';
+import { AuthService } from 'C:/AngularProjects/tfg-v0.1/src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +8,12 @@ import {AuthService} from 'C:/AngularProjects/tfg-v0.1/src/app/services/auth.ser
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService:AuthService) {
+  constructor(private authService: AuthService) {
     authService.handleAuthentication();
-   }
+  }
 
   ngOnInit() {
 
-    console.log("Usuario autenticado: " + this.authService.isAuthenticated());
   }
 
 }

@@ -1,7 +1,9 @@
 <div *ngIf="isAdmin(); else elseBlock">
 
+  <pre class="full-profile">{{ profile | json }}</pre>
+
   <h3>Crear instalación</h3><br>
-  <form (ngSubmit)="guardar()" (#forma)="NgForm">
+  <form (ngSubmit)="guardar()" #forma="ngForm">
 
 
     <div class="row">
@@ -170,8 +172,8 @@
           Guardar
         </button>
       </div>
-      <div class="col-2 ">
-        <button type="button" class="btn success">
+      <div class="col-2 " routerLinkActive="active">
+        <button type="button" class="btn success" [routerLink]="['/instalaciones']">
           Cancelar
         </button>
       </div>
