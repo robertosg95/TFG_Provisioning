@@ -14,7 +14,7 @@ export class InstalacionesComponent implements OnInit {
 
   clientes: Cliente[] = [];
 
-  instalaciones: Instalaciones;
+  instalaciones: Instalaciones[];
 
   metadata: any;
 
@@ -24,7 +24,10 @@ export class InstalacionesComponent implements OnInit {
   constructor(private _clientesService: ClientesService,
     private router: Router) {
     this._clientesService.getInstalaciones()
-      .subscribe(instalaciones => this.instalaciones = instalaciones);
+      .subscribe(instalaciones => {
+        this.instalaciones = instalaciones;
+      })
+
     // this._clientesService.getMetadata()
     //   .subscribe(metadata => this.metadata = metadata);
     //this.instalaciones = this._clientesService.getMovies();
@@ -36,7 +39,7 @@ export class InstalacionesComponent implements OnInit {
     // if (_texto == this.instalaciones.ID_cliente)) {
     //   this.router.navigate(['/area-cliente']);
     // }
-    console.log(this.instalaciones.key$);
+    //console.log(this.instalaciones.key$);
 
   }
 

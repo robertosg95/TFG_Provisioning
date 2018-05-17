@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { Instalaciones } from '../../interfaces/instalaciones.interface';
 import { ClientesService } from '../../services/clientes.service';
 import { Router } from '@angular/router';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-crear-instalacion',
@@ -35,9 +37,13 @@ export class CrearInstalacionComponent implements OnInit {
 
   }
 
+  private itemsCollection: AngularFirestoreCollection<any>;
+  items: Observable<any[]>;
+
   constructor(private authService: AuthService,
     private clientesService: ClientesService,
-    private router: Router) { }
+    private router: Router,
+    private afs: AngularFirestore) { }
 
   ngOnInit() {
     if (this.authService.userProfile) {
@@ -51,19 +57,29 @@ export class CrearInstalacionComponent implements OnInit {
 
   public isAdmin() {
 
-    if (this.profile.sub == "auth0|5ab0d7fc4c56d3111662f596") {
+    if (this.profile.sub == "auth0|5ab0d7c371b5ad0e62997fae") {
       return true;
     } else {
       return false;
     }
   }
   public guardar() {
-    console.log(this.instalacion);
-    this.clientesService.crearInstalacion(this.instalacion)
-      .subscribe(data => {
-        this.router.navigate(['cliente', data.name])
-      },
-        error => console.error(error));
+
+    this.clientesService.crearInstalacion(this.instalacion);
+    this.router.navigate(['/cliente', this.instalacion.ID_cliente]);
+    //http://54.167.200.234:3000/devices/0019CB-HGW%252D2501GN%252DR2%2520-S150Y05034865
+
+    // OUI: 0019CB
+    // Product class: HGW-2501GN-R2
+    // Serial number: S150Y05034865
+
+
+    // console.log(this.instalacion);
+    // this.clientesService.crearInstalacion(this.instalacion)
+    //   .subscribe(data => {
+    //     this.router.navigate(['cliente', data.name])
+    //   },
+    //     error => console.error(error));
   }
 
 }

@@ -9,5 +9,5 @@
 
 
 <div class="list-group ">
-  <a *ngFor="let k of instalaciones | keys " [routerLink]="[ '/cliente', k] " class="list-group-item list-group-item-action ">{{instalaciones[k].ID_cliente}}</a>
+  <a *ngFor="let k of instalaciones | keys " [routerLink]="[ '/cliente', instalaciones[k].ID_cliente] " class="list-group-item list-group-item-action ">{{instalaciones[k].ID_cliente}}</a>
 </div>

@@ -1,13 +1,9 @@
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item | json}}
-  </li>
-</ul>
-
-
-
 <div class="row">
   <div class="p-3 mb-2 bg-app text-white col">Configuración del Wi-Fi</div>
+</div>
+<div *ngIf="actualizado" class="alert alert-success">
+  <strong>Actualizado correctamente</strong>
+  <br>
 </div>
 <form (ngSubmit)="guardar()" #forma="ngForm">
   <div class='form-group row'>
@@ -15,7 +11,7 @@
       <label class="col-form-label">SSID: </label>
     </div>
     <div class="col-8">
-      <input class="form-control" type="text" [(ngModel)]="actualizar_wifi.SSID" name="SSID">
+      <input class="form-control" type="text" [(ngModel)]="instalacion.SSID" name="SSID">
     </div>
   </div>
   <div class='form-group row'>
@@ -23,7 +19,7 @@
       <label class="col-form-label">Contraseña: </label>
     </div>
     <div class="col-8">
-      <input class="form-control" type="text" [(ngModel)]="actualizar_wifi.contrasena_wifi" name="contrasena_wifi" />
+      <input class="form-control" type="text" [(ngModel)]="instalacion.contrasena_wifi" name="contrasena_wifi" />
     </div>
   </div>
   <br>

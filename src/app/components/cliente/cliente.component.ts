@@ -32,7 +32,7 @@ export class ClienteComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.clientesService.getInstalacion(this.id)
-        .subscribe(instalacion => this.instalacion = instalacion);
+        .subscribe(instalacion => this.instalacion = instalacion[0]);
     })
   }
 
@@ -65,12 +65,10 @@ export class ClienteComponent implements OnInit {
   }
 
   public actualizar() {
-    this.clientesService.actualizarInstalacion(this.instalacion, this.id)
-      .subscribe(data => {
-        this.router.navigate(['cliente', this.id]);
-        this.actualizado = true;
-        this.editar = false;
-      },
-        error => console.error(error));
+    this.clientesService.actualizarInstalacion(this.instalacion);
+    this.router.navigate(['cliente', this.id]);
+    this.actualizado = true;
+    this.editar = false;
+
   }
 }

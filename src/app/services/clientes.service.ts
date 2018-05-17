@@ -3,6 +3,9 @@ import { Http, Headers } from '@angular/http';
 import { Instalaciones } from '../interfaces/instalaciones.interface';
 import 'rxjs/Rx';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+
 
 @Injectable()
 export class ClientesService {
@@ -11,6 +14,8 @@ export class ClientesService {
   instalacionesURL: string = "https://provisioning-tfg.firebaseio.com/instalaciones";
 
   private clientesArr: Cliente[] = [];
+
+  public nuevo: boolean = false;
 
   private clientes: Cliente[] =
     [
@@ -37,49 +42,79 @@ export class ClientesService {
       }
     ];
 
-  constructor(private http: Http, private db: AngularFireDatabase) {
+  constructor(private http: Http, private db: AngularFireDatabase, private afs: AngularFirestore) {
     console.log("Servicio listo");
   }
 
   crearInstalacion(instalacion: Instalaciones) {
-    let body = JSON.stringify(instalacion);
-    let headers = new Headers({
-      'Content-type': 'application/json'
-    });
-    return this.http.post(this.firebaseURL, body, { headers })
-      .map(res => {
-        console.log(res.json());
-        return res.json();
-      })
+    // let body = JSON.stringify(instalacion);
+    // let headers = new Headers({
+    //   'Content-type': 'application/json'
+    // });
+    // return this.http.post(this.firebaseURL, body, { headers })
+    //   .map(res => {
+    //     console.log(res.json());
+    //     return res.json();
+    //   })
+    let userRef = this.afs.collection('usuarios');
+    let set = userRef.doc(instalacion.ID_cliente).set(instalacion);
+    this.nuevo == true;
+    return set;
   }
 
-  actualizarInstalacion(instalacion: Instalaciones, key$: string) {
-    let body = JSON.stringify(instalacion);
-    let headers = new Headers({
-      'Content-type': 'application/json'
+  actualizarInstalacion(instalacion: Instalaciones) {
+    // let body = JSON.stringify(instalacion);
+    // let headers = new Headers({
+    //   'Content-type': 'application/json'
+    // });
+    // let url = `${this.instalacionesURL}/${key$}.json`
+    // return this.http.put(url, body, { headers })
+    //   .map(res => {
+    //     console.log(res.json());
+    //     return res.json();
+    //   })
+    let userRef = this.afs.collection('usuarios');
+    let set = userRef.doc(instalacion.ID_cliente).set(instalacion);
+    return set;
+  }
+
+  actualizarWifi(instalacion: Instalaciones) {
+    let userRef = this.afs.collection('usuarios');
+    let set = userRef.doc(instalacion.ID_cliente).update({
+      SSID: instalacion.SSID,
+      contrasena_wifi: instalacion.contrasena_wifi
     });
-    let url = `${this.instalacionesURL}/${key$}.json`
-    return this.http.put(url, body, { headers })
-      .map(res => {
-        console.log(res.json());
-        return res.json();
-      })
+    return set;
   }
 
   getInstalacion(id: string) {
-    let url = `${this.instalacionesURL}/${id}.json`;
-    return this.http.get(url)
-      .map(res => {
-        console.log(res.json());
-        return res.json();
+    // let url = `${this.instalacionesURL}/${id}.json`;
+    // return this.http.get(url)
+    //   .map(res => {
+    //     console.log(res.json());
+    //     return res.json();
+    //   })
+    let userRef = this.afs.collection<Instalaciones>('usuarios', ref => ref.where('ID_cliente', '==', id));
+    //let query = userRef.
+    return userRef.valueChanges()
+      .map((cliente: Instalaciones[]) => {
+        console.log(cliente);
+        return cliente;
       })
   }
 
   getInstalaciones() {
-    return this.http.get(this.firebaseURL)
-      .map(res => {
-        console.log(res.json());
-        return res.json();
+    // return this.http.get(this.firebaseURL)
+    //   .map(res => {
+    //     console.log(res.json());
+    //     return res.json();
+    //   })
+
+    let userRef = this.afs.collection<Instalaciones>('usuarios');
+    return userRef.valueChanges()
+      .map((cliente: Instalaciones[]) => {
+        console.log(cliente);
+        return cliente;
       })
   }
 
