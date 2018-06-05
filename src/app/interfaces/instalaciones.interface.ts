@@ -19,5 +19,15 @@ export interface Instalaciones {
   usuario_web: string;
   contrasena_web: string;
   key$?: string;
-
+  nombre_puerto?: string;
+  direccion_puerto?: string;
+  protocolo_puerto?: string;
+  puerto_inicio?: string;
+  puerto_fin?: string;
+  direccion_ip?: string;
+  mascara?: string;
+  dhcp_inicio?: string;
+  dhcp_fin?: string;
+  dns_primario?: string;
+  dns_secundario?: string;
 }

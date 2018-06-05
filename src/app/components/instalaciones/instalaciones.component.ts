@@ -35,6 +35,11 @@ export class InstalacionesComponent implements OnInit {
 
   ngOnInit() { }
 
+  borrar(instalacion: Instalaciones) {
+    this._clientesService.borrarInstalacion(instalacion);
+    this.router.navigate(['/instalaciones']);
+  }
+
   buscar(_texto: string) {
     // if (_texto == this.instalaciones.ID_cliente)) {
     //   this.router.navigate(['/area-cliente']);

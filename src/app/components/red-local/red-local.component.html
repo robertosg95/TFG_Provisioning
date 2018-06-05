@@ -8,7 +8,7 @@
       <label class="col-form-label">Dirección IP del router:</label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="red_local.ip_router" name="ip_router">
+      <input class="form-control" type="text" [(ngModel)]="instalacion.direccion_ip" name="ip_router">
     </div>
   </div>
   <div class='form-group row'>
@@ -16,7 +16,7 @@
       <label class="col-form-label">Máscara de red: </label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="red_local.mascara_red" name="direccion_ip" />
+      <input class="form-control" type="text" [(ngModel)]="instalacion.mascara" name="direccion_ip" />
     </div>
   </div>
   <br>
@@ -29,7 +29,7 @@
       <label class="col-form-label">IP de inicio del rango:</label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="red_local.inicio_dhcp" name="inicio_dhcp">
+      <input class="form-control" type="text" [(ngModel)]="instalacion.dhcp_inicio" name="inicio_dhcp">
     </div>
   </div>
   <div class='form-group row'>
@@ -37,7 +37,7 @@
       <label class="col-form-label">IP de fin del rango: </label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="red_local.fin_dhcp" name="fin_dhcp" />
+      <input class="form-control" type="text" [(ngModel)]="instalacion.dhcp_fin" name="fin_dhcp" />
     </div>
   </div>
   <br>
@@ -50,7 +50,7 @@
       <label class="col-form-label">Servidor DNS primario:</label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="red_local.dns_primario" name="dns_primario">
+      <input class="form-control" type="text" [(ngModel)]="instalacion.dns_primario" name="dns_primario">
     </div>
   </div>
   <div class='form-group row'>
@@ -58,7 +58,7 @@
       <label class="col-form-label">Servidor DNS secundario: </label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="red_local.dns_secundario" name="dns_secundario" />
+      <input class="form-control" type="text" [(ngModel)]="instalacion.dns_secundario" name="dns_secundario" />
     </div>
   </div>
 

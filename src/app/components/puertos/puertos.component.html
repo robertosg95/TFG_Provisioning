@@ -8,7 +8,7 @@
       <label class="col-form-label">Nombre:</label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="abrir_puerto.nombre" name="nombre">
+      <input class="form-control" type="text" [(ngModel)]="instalacion.nombre_puerto" name="nombre">
     </div>
   </div>
   <div class='form-group row'>
@@ -16,7 +16,7 @@
       <label class="col-form-label">Dirección IP: </label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="abrir_puerto.direccion_ip" name="direccion_ip" />
+      <input class="form-control" type="text" [(ngModel)]="instalacion.direccion_puerto" name="direccion_ip" />
     </div>
   </div>
 
@@ -25,11 +25,10 @@
       <label class="col-form-label">Protocolo: </label>
     </div>
     <div class="col">
-      <select class="form-control" [(ngModel)]="abrir_puerto.protocolo" name="protocolo">
+      <select class="form-control" [(ngModel)]="instalacion.protocolo_puerto" name="protocolo">
                 <option disabled selected value> Seleccione un protocolo </option>
-                <option value="modelo 1">TCP</option>
-                <option value="modelo 2">UDP</option>
-                <option value="modelo 3">TCP + UDP</option>
+                <option value="TCP">TCP</option>
+                <option value="UDP">UDP</option>
               </select>
     </div>
   </div>
@@ -38,13 +37,13 @@
       <label class="col-form-label">Puerto de inicio: </label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="abrir_puerto.puerto_inicio" name="puerto_inicio" />
+      <input class="form-control" type="text" [(ngModel)]="instalacion.puerto_inicio" name="puerto_inicio" />
     </div>
     <div class="col">
       <label class="col-form-label">Puerto de fin: </label>
     </div>
     <div class="col">
-      <input class="form-control" type="text" [(ngModel)]="abrir_puerto.puerto_fin" name="puerto_fin" />
+      <input class="form-control" type="text" [(ngModel)]="instalacion.puerto_fin" name="puerto_fin" />
     </div>
   </div>
 

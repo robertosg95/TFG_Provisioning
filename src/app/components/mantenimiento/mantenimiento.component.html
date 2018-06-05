@@ -1,20 +1,36 @@
 <div class="row">
-  <div class="p-3 mb-2 bg-app text-white col">Reiniciar router</div>
+  <div class="p-3 mb-2 bg-app text-white col">Reiniciar</div>
 </div>
 <hr>
 <div class="row">
-  <button type="button" class="btn success" (click)="reiniciar()">
+  <button type="button" class="btn success mx-auto" (click)="confirmar_reiniciar()">
     Reiniciar
   </button>
 </div>
 <br>
+<div *ngIf="reinicio" class="alert alert-warning alert-dismissible fade show" role="alert">
+  ¿Seguro que quieres reiniciar el dispositivo?
+  <button type="button" class="btn-confirm" data-dismiss="alert" (click)="reiniciar()">Reiniciar</button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="cerrar_reiniciar()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<br>
 <div class="row">
-  <div class="p-3 mb-2 bg-app text-white col">Resetear a valores de fábrica</div>
+  <div class="p-3 mb-2 bg-app text-white col">Restaurar valores de fábrica</div>
 </div>
 <hr>
 <div class="row">
-  <button type="button" class="btn success" (click)="resetear()">
+  <button type="button" class="btn success mx-auto" (click)="confirmar_resetear()">
     Resetear
+  </button>
+</div>
+<br>
+<div *ngIf="reseteo" class="alert alert-warning alert-dismissible fade show" role="alert">
+  ¿Seguro que quieres resetear el dispositivo?
+  <button type="button" class="btn-confirm" data-dismiss="alert" (click)="resetear()">Resetear</button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="cerrar_resetear()">
+    <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <br>
@@ -23,7 +39,14 @@
 </div>
 <hr>
 <div class="row">
-  <button type="button" class="btn success" (click)="actualizar()">
+  <button type="button" class="btn success mx-auto" (click)="confirmar_actualizar()">
     Actualizar
+  </button>
+</div>
+<br>
+<div *ngIf="actualiza" class="alert alert-success alert-dismissible fade show" role="alert">
+  Su dispositivo dispone de la última versión.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="cerrar_actualizar()">
+    <span aria-hidden="true">&times;</span>
   </button>
 </div>

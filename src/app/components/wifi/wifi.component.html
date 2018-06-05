@@ -1,9 +1,9 @@
-<div class="row">
-  <div class="p-3 mb-2 bg-app text-white col">Configuración del Wi-Fi</div>
-</div>
 <div *ngIf="actualizado" class="alert alert-success">
   <strong>Actualizado correctamente</strong>
   <br>
+</div>
+<div class="row">
+  <div class="p-3 mb-2 bg-app text-white col">Configuración del Wi-Fi</div>
 </div>
 <form (ngSubmit)="guardar()" #forma="ngForm">
   <div class='form-group row'>

@@ -15,6 +15,14 @@
   cursor: pointer;
 }
 
+.btn-confirm {
+
+  background-color: #F7D358;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .btn-n {
   border: 2px solid white;
   background-color: white;

@@ -1,58 +1,45 @@
-<h1>Configuración del router</h1>
+<h1>Configuración del CPE</h1>
 <hr>
-
-
-<div class="row justify-content-around" routerLinkActive="active">
-  <div class="col-md-4">
-    <div class="card">
+<div class="row" routerLinkActive="active">
+  <div class="col">
+    <div class="card" style="width: 15rem; margin-top: 25px;">
       <button [routerLink]="['/wifi']" class="btn btn-outline-dark">
         <img class="card-img-top img-fluid" src="/assets/wifi.png">
-
       <div class="card-body">
-
-        <h5 class="card-title">WiFi / Contraseña</h5>
-        <p class="card-text">Configuración del wifi y toda la vaina</p>
-
-
+        <h5 class="card-title">WiFi</h5>
       </div>
         </button>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card">
+  <div class="col">
+    <div class="card" style="width: 15rem; margin-top: 25px;">
       <button [routerLink]="['/puertos']" class="btn btn-outline-dark">
       <img class="card-img-top img-fluid" src="/assets/puertos.png">
 
       <div class="card-body">
         <h5 class="card-title">Puertos</h5>
-        <p class="card-text">Abrir puertos y esas cosas</p>
       </div>
       </button>
     </div>
   </div>
-
-</div>
-<div class="row justify-content-around">
-  <div class="col-md-4">
-    <div class="card">
+  <div class="col">
+    <div class="card" style="width: 15rem; margin-top: 25px;">
       <button [routerLink]="['/red-local']" class="btn btn-outline-dark">
       <img class="card-img-top img-fluid" src="/assets/red-local.png">
 
       <div class="card-body">
         <h5 class="card-title">Red local</h5>
-        <p class="card-text">Configuración de dirección IP, gateway, ...</p>
       </div>
         </button>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card">
+  <div class="col">
+    <div class="card" style="width: 15rem; margin-top: 25px;">
       <button [routerLink]="['/mantenimiento']" class="btn btn-outline-dark">
       <img class="card-img-top img-fluid" src="/assets/mantenimiento.png">
 
       <div class="card-body">
         <h5 class="card-title">Mantenimiento</h5>
-        <p class="card-text">Reiniciar router o establecer valores de fábrica</p>
       </div>
         </button>
     </div>

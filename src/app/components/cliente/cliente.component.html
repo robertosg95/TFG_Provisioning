@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md align-self-start">
     <h3>
-      {{instalacion.ID_cliente}}
+      {{instalacion.nombre}} {{instalacion.apellidos}}
     </h3>
   </div>
   <div class="col-md align-self-end">
@@ -61,8 +61,11 @@
     <div class="col">
       <label class="col-form-label">Modelo: </label>
     </div>
-    <div class="col-4">
-      <input class="form-control" [(ngModel)]="instalacion.modelo_router" name="modelo_router" disabled>
+    <div class="col-4" *ngIf="instalacion.modelo_router=='0019CB-HGW%252D2501GN%252DR2%2520-'">
+      <input class="form-control" name="modelo_router" value="Mitrastar" disabled>
+    </div>
+    <div class="col-4" *ngIf="instalacion.modelo_router=='E05163-VRV9510KWAC23-'">
+      <input class="form-control" name="modelo_router" value="LiveBox" disabled>
     </div>
     <div class="col">
       <label class="col-form-label">Número de serie: </label>
@@ -216,9 +219,8 @@
       <div class="col-4">
         <select class="form-control" [(ngModel)]="instalacion.modelo_router" name="modelo_router">
         <option disabled selected value> Seleccione un modelo </option>
-        <option value="modelo 1">Modelo 1</option>
-        <option value="modelo 2">Modelo 2</option>
-        <option value="modelo 3">Modelo 3</option>
+        <option value="0019CB-HGW%252D2501GN%252DR2%2520-">Mitrastar</option>
+        <option value="E05163-VRV9510KWAC23-">LiveBox</option>
       </select>
       </div>
       <div class="col">

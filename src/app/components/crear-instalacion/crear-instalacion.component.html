@@ -1,7 +1,5 @@
 <div *ngIf="isAdmin(); else elseBlock">
 
-  <pre class="full-profile">{{ profile | json }}</pre>
-
   <h3>Crear instalación</h3><br>
   <form (ngSubmit)="guardar()" #forma="ngForm">
 
@@ -54,9 +52,8 @@
       <div class="col-4">
         <select class="form-control" [(ngModel)]="instalacion.modelo_router" name="modelo_router">
           <option disabled selected value> Seleccione un modelo </option>
-          <option value="modelo 1">Modelo 1</option>
-          <option value="modelo 2">Modelo 2</option>
-          <option value="modelo 3">Modelo 3</option>
+          <option value="0019CB-HGW%252D2501GN%252DR2%2520-">Mitrastar</option>
+          <option value="E05163-VRV9510KWAC23-">LiveBox</option>
         </select>
       </div>
       <div class="col">
@@ -147,7 +144,7 @@
     </div>
     <br>
     <div class="row">
-      <div class="p-3 mb-2 bg-app text-white col">Web</div>
+      <div class="p-3 mb-2 bg-app text-white col">Acceso área del cliente</div>
     </div>
 
     <hr>
